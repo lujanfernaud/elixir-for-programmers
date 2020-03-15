@@ -1,5 +1,12 @@
 defmodule Dictionary do
-  def hello do
-    IO.puts("Hello, World!")
+  def random_word do
+    word_list()
+    |> Enum.random()
+  end
+
+  defp word_list do
+    "assets/words.txt"
+    |> File.read!()
+    |> String.split()
   end
 end
