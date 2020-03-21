@@ -1,4 +1,6 @@
 defmodule Hangman.Game do
+  alias Hangman.Game
+
   # A struct is a named map. It is static (you can't add or remove keys).
   # It is named the same as the module on which it is defined.
   # We could call it like %Hangman.Game{}
@@ -11,11 +13,11 @@ defmodule Hangman.Game do
     turns_left: 7,
     game_state: :initializing,
     letters: [],
-    used: MapSet.new()
+    used: []
   )
 
   def new_game do
-    %Hangman.Game{
+    %Game{
       letters: Dictionary.random_word() |> String.codepoints()
     }
   end
@@ -25,16 +27,16 @@ defmodule Hangman.Game do
   end
 
   def make_move(game, guess) do
-    game = accept_move(game, guess, MapSet.member?(game.used, guess))
+    game = accept_move(game, guess, Enum.member?(game.used, guess))
     {game, tally(game)}
   end
 
   def accept_move(game, _guess, _already_guessed = true) do
-    Map.put(game, :game_state, :already_used)
+    %Game{game | game_state: :already_used}
   end
 
   def accept_move(game, guess, _already_guessed) do
-    Map.put(game, :used, MapSet.put(game.used, guess))
+    %Game{game | used: [guess | game.used]}
   end
 
   def tally(_game) do
