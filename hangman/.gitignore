@@ -23,4 +23,4 @@ erl_crash.dump
 hangman-*.tar
 
 # Elixir LS
-.elixir-ls
+/.elixir-ls/
