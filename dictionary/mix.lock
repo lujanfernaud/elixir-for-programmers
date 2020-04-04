@@ -1,0 +1,4 @@
+%{
+  "observer_cli": {:hex, :observer_cli, "1.5.3", "d42e20054116c49d5242d3ff9e1913acccebe6015f449d6e312a5bc160e79a62", [:mix, :rebar3], [{:recon, "~>2.5.0", [hex: :recon, repo: "hexpm", optional: false]}], "hexpm", "3d2de7a710b9bed4cfbdae0419d98b1985634bd8cc1f26ef9576c2eb9aa6b35e"},
+  "recon": {:hex, :recon, "2.5.0", "2f7fcbec2c35034bade2f9717f77059dc54eb4e929a3049ca7ba6775c0bd66cd", [:mix, :rebar3], [], "hexpm", "72f3840fedd94f06315c523f6cecf5b4827233bed7ae3fe135b2a0ebeab5e196"},
+}
