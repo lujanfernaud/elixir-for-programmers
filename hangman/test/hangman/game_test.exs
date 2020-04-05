@@ -15,7 +15,7 @@ defmodule Hangman.GameTest do
     for state <- [:won, :lost] do
       game = Game.new_game() |> Map.put(:game_state, state)
 
-      assert game == Game.make_move(game, "x")
+      assert {game, _tally} = Game.make_move(game, "x")
     end
   end
 
@@ -92,7 +92,7 @@ defmodule Hangman.GameTest do
 
   defp assert_game_moves(moves, game) do
     Enum.reduce(moves, game, fn {guess, state, turns_left}, new_game ->
-      new_game = Game.make_move(new_game, guess)
+      {new_game, _tally} = Game.make_move(new_game, guess)
       assert {guess, new_game.game_state, new_game.turns_left} == {guess, state, turns_left}
       new_game
     end)
