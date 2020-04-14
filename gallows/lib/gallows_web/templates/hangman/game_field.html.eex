@@ -1,0 +1,10 @@
+Game Field
+
+<p>
+  Turns left: <%= @tally.turns_left %>
+</p>
+
+<p>
+  Word so far: <%= letters(@tally.letters) %>
+</p>
+
