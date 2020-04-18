@@ -1,15 +1,18 @@
+<%= game_state(@tally) %>
+
 <p>
   Turns left: <%= @tally.turns_left %>
 </p>
 
 <p>
-  Word so far: <%= letters(@tally.letters) %>
+  Word so far: <%= letters(@tally) %>
 </p>
 
-<p>
+<%= if game_over?(@tally) do %>
+  <%= button "New game", to: Routes.hangman_path(@conn, :create) %>
+<% else %>
   <%= form_for(@conn, Routes.hangman_path(@conn, :make_move), [ as: :make_move, method: :put ], fn f -> %>
     <%= text_input(f, :guess, value: "", autofocus: true) %>
     <%= submit("Make next move") %>
   <% end) %>
-</p>
-
+<% end %>
