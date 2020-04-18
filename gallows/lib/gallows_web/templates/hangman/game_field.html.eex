@@ -1,10 +1,15 @@
-Game Field
-
 <p>
   Turns left: <%= @tally.turns_left %>
 </p>
 
 <p>
   Word so far: <%= letters(@tally.letters) %>
+</p>
+
+<p>
+  <%= form_for(@conn, Routes.hangman_path(@conn, :make_move), [ as: :make_move, method: :put ], fn f -> %>
+    <%= text_input(f, :guess, value: "", autofocus: true) %>
+    <%= submit("Make next move") %>
+  <% end) %>
 </p>
 

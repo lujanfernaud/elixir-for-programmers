@@ -25,6 +25,8 @@ defmodule GallowsWeb.Router do
     get("/", HangmanController, :index)
 
     post("/", HangmanController, :create)
+
+    put("/", HangmanController, :make_move)
   end
 
   # Other scopes may use custom stacks.
