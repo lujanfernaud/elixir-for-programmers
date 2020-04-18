@@ -16,7 +16,9 @@ defmodule GallowsWeb.HangmanController do
 
   def make_move(conn, params) do
     guess = params["make_move"]["guess"]
-    tally = conn
+
+    tally =
+      conn
       |> get_session(:game)
       |> Hangman.make_move(guess)
 
