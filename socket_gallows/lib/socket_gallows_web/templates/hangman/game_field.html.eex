@@ -1,0 +1,20 @@
+<div class="app">
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <div v-bind:class="'alert alert-' + game_state_class">
+          {{ game_state_class }}
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="column">
+        <%= render "_gallows.html", turns_left: @tally.turns_left, conn: @conn %>
+      </div>
+      <div class="column">
+        <%= render "_status.html", tally: @tally, conn: @conn %>
+      </div>
+    </div>
+  </div>
+</div>
